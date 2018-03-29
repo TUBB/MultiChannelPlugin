@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.github.tubb.multichannel'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "io.github.tubb.multichannel.example"
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        myConfig {
+            // just for test
+            storeFile file("tubb.keystore")
+            storePassword "123456"
+            keyAlias "tubb"
+            keyPassword "123456"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myConfig
+        }
+    }
+    // Android plugin for Gradle 3.0.0
+    // All flavors must now belong to a named flavor dimension.
+    // Learn more at https://d.android.com/r/tools/flavorDimensions-missing-error-message.html
+    project.android.flavorDimensions("default")
+    productFlavors {
+        dev {
+            dimension 'default'
+            // set the manifestPlaceholders for run build
+            manifestPlaceholders = [ channel:"dev" ]
+        }
+    }
+}
+
+appChannel {
+    channelFlavorConfig {
+        channelConfigFilePath '/Users/tubingbing/StudioProjects/MultiChannelPlugin/app/channels.txt'
+        configProductFlavor { name ->
+            if ('qq'.equals(name)) { // for test
+                return {
+                    dimension 'default'
+                    manifestPlaceholders = [ channel:"${name}_yyb" ]
+                }
+            } else {
+                return {
+                    dimension 'default'
+                    manifestPlaceholders = [ channel:name ]
+                }
+            }
+        }
+        // must call after configProductFlavor dsl
+        createChannel()
+    }
+    bundleOutputConfig {
+        outputDir '/Users/tubingbing/channels'
+        renameBundleFileName { project, variant ->
+            // rename apk file
+            project.name + '-' + variant.flavorName + '-' + variant.buildType.name + '-' + variant.versionName + '.apk'
+        }
+    }
+    taskConfig {
+        disableLintTask true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.tubb.librarytest">
+    <application>
+        <meta-data android:name="MCP_LIB_CHANNEL" android:value="${channel}"/>
+    </application>
+</manifest>
