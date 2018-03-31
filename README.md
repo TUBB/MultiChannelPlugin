@@ -1,7 +1,7 @@
 # MultiChannelPlugin
 ![](https://img.shields.io/badge/release-v1.0.0-brightgreen.svg) [![](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-多渠道打包插件，支持apk和aar
+多渠道打包gradle插件，支持打包apk和aar
 - 读取渠道配置文件，动态生成`ProductFlavor`
 - 重命名apk和aar文件名字，根据需要指定输出目录
 - 运行多渠道打包任务（`multiChannel`）时，可以选择禁用不必要的任务（`lint`, `debug`和`test`），提升打包速度
