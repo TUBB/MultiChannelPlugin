@@ -69,6 +69,8 @@ appChannel {
     }
     taskConfig {
         disableLintTask true
+        disableDebugTask true
+        disableTestTask true
     }
 }
 

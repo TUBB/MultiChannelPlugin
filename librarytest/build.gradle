@@ -1,19 +1,9 @@
 apply plugin: 'com.android.library'
-
-buildscript {
-    repositories {
-        maven {
-            url uri('/Users/tubingbing/StudioProjects/github/maven/repo/MultiChannelPlugin')
-        }
-    }
-    dependencies {
-        classpath 'io.github.tubb:multichannel:0.0.13'
-    }
-}
-
 apply plugin: 'io.github.tubb.multichannel'
+
 project.ext.libVersionCode = 1
 project.ext.libVersionName = '1.0.0'
+
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
