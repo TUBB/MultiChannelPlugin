@@ -13,5 +13,5 @@ class BundleOutputConfigExtension {
     /**
      * Rename bundle file
      */
-    Closure renameBundleFileName
+    Closure renameBundleFile
 }

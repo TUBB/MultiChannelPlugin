@@ -55,7 +55,7 @@ appChannel {
     }
     bundleOutputConfig {
         outputDir '/Users/tubingbing/channels'
-        renameBundleFileName { project, variant ->
+        renameBundleFile { project, variant ->
             project.name + '-' + variant.flavorName + '-' + variant.buildType.name +'-'+ project.libVersionName +'.aar'
         }
     }

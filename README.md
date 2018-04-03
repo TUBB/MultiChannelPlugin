@@ -1,5 +1,5 @@
 # MultiChannelPlugin
-![](https://img.shields.io/badge/release-v1.0.0-brightgreen.svg) [![](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+![](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg) [![](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 多渠道打包gradle插件，支持打包apk和aar
 - 读取渠道配置文件，动态生成`ProductFlavor`
@@ -8,7 +8,7 @@
 
 # 添加插件依赖
 ```groovy
-classpath 'io.github.tubb:multichannel:1.0.0'
+classpath 'io.github.tubb:multichannel:1.0.1'
 // apply multi channel plugin
 apply plugin: 'io.github.tubb.multichannel'
 ```
@@ -47,7 +47,7 @@ appChannel {
 appChannel {
     bundleOutputConfig {
         outputDir '/Users/tubingbing/channels'
-        renameBundleFileName { project, variant ->
+        renameBundleFile { project, variant ->
             // rename apk file
             project.name + '-' + variant.flavorName + '-' + variant.buildType.name + '-' + variant.versionName + '.apk'
         }

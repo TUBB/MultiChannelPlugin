@@ -39,7 +39,7 @@ publish {
     userOrg = 'tubb'
     groupId = 'io.github.tubb'
     artifactId = 'multichannel'
-    version = '1.0.0'
+    version = '1.0.1'
     description = 'Build multi channels for Android(apk, aar)'
     website = "https://github.com/TUBB/${rootProject.name}"
 }

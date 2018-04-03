@@ -10,11 +10,11 @@ import org.gradle.api.Project;
 
 class BundleOutputConfigExtensionHandler {
 
-    static void renameBundleFileName(Project project, def appChannelExtension) {
+    static void renameBundleFile(Project project, def appChannelExtension) {
         def bundleOutputConfigExtension = appChannelExtension.bundleOutputConfig
         if (bundleOutputConfigExtension == null) return
         String outputDir = bundleOutputConfigExtension.outputDir
-        Closure renameBundleFileName = bundleOutputConfigExtension.renameBundleFileName
+        Closure renameBundleFile = bundleOutputConfigExtension.renameBundleFile
         def variants
         if (project.plugins.hasPlugin('com.android.application')) {
             variants = project.android.applicationVariants
@@ -32,8 +32,8 @@ class BundleOutputConfigExtensionHandler {
                 return
             }
             variant.outputs.all { output ->
-                if (renameBundleFileName != null) {
-                    output.outputFileName = renameBundleFileName(project, variant)
+                if (renameBundleFile != null) {
+                    output.outputFileName = renameBundleFile(project, variant)
                 }
                 if (!'debug'.equals(variant.buildType.name)) {
                     srcBundlePathList.add(output.outputFile.getAbsolutePath())

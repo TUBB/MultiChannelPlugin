@@ -1,5 +1,6 @@
 package io.github.tubb.multichannel
 
+import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
@@ -35,13 +36,13 @@ class AppChannelPlugin implements Plugin<Project> {
             if (hasMultiChannelTask()) {
                 def appChannelExtension = project['appChannel']
                 if (appChannelExtension == null) {
-                    throw new RuntimeException('Please config the appChannel dsl')
+                    throw new GradleException('Please config the appChannel dsl')
                 }
                 def taskConfigExtension = appChannelExtension.taskConfig
                 if (taskConfigExtension != null) {
                     taskConfigExtensionHandler.applyTaskConfig(project, taskConfigExtension)
                 }
-                bundleOutputConfigExtensionHandler.renameBundleFileName(project, appChannelExtension)
+                bundleOutputConfigExtensionHandler.renameBundleFile(project, appChannelExtension)
             }
         }
     }
