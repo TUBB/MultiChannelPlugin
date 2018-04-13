@@ -41,7 +41,7 @@ class AppChannelTask extends DefaultTask {
     }
 
     static String taskName() {
-        return "multiChannel";
+        return "multiChannel"
     }
 
     static String taskShortName() {

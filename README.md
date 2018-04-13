@@ -60,7 +60,7 @@ appChannel {
 ## `taskConfig`dsl
 ```groovy
 appChannel {
-	taskConfig {
+    taskConfig {
         disableLintTask true
         disableDebugTask true
         disableTestTask true
