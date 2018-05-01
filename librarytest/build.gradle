@@ -36,7 +36,7 @@ android {
 
 appChannel {
     channelFlavorConfig {
-        channelConfigFilePath 'librarytest/channels.txt'
+        channelConfigFilePath "${project.getProjectDir()}/channels.txt"
         configProductFlavor { name ->
             if ('qq'.equals(name)) {
                 return {
@@ -54,7 +54,7 @@ appChannel {
         createChannel()
     }
     bundleOutputConfig {
-        outputDir '/Users/tubingbing/channels'
+        outputDir "${project.getProjectDir()}/channels"
         renameBundleFile { project, variant ->
             project.name + '-' + variant.flavorName + '-' + variant.buildType.name +'-'+ project.libVersionName +'.aar'
         }
@@ -66,5 +66,5 @@ appChannel {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 }
