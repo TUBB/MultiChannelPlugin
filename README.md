@@ -19,7 +19,7 @@ apply plugin: 'io.github.tubb.multichannel'
 ```groovy
 appChannel {
     channelFlavorConfig {
-        channelConfigFilePath '/Users/tubingbing/StudioProjects/MultiChannelPlugin/app/channels.txt'
+        channelConfigFilePath "${project.getProjectDir()}/channels.txt"
         configProductFlavor { name ->
             if ('qq'.equals(name)) { // for test
                 return {
@@ -46,7 +46,7 @@ appChannel {
 ```groovy
 appChannel {
     bundleOutputConfig {
-        outputDir '/Users/tubingbing/channels'
+        outputDir "${project.getProjectDir()}/channels"
         renameBundleFile { project, variant ->
             // rename apk file
             project.name + '-' + variant.flavorName + '-' + variant.buildType.name + '-' + variant.versionName + '.apk'
