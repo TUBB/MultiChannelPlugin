@@ -38,7 +38,7 @@ appChannel {
     }
 }
 ```
-可以看到`channelFlavorConfig`dsl主要用来配置`渠道文件`的路径（绝对路径）。每个`ProductFlavor`对应的配置跟平常配置`ProductFlavor`一样。这里要注意的是要主动调用由插件导出的`Project.createChannel()`方法来主动创建多个`ProductFlavor`（`Configuration phase`阶段）
+可以看到`channelFlavorConfig`dsl主要用来配置`渠道文件`的路径（绝对路径）。每个`ProductFlavor`对应的配置跟平常配置`ProductFlavor`一样。这里要注意的是要主动调用由插件扩展的`Project.createChannel()`方法来主动创建多个`ProductFlavor`（`Configuration phase`期间）
 
 ![](art/gradle_lifecycle.png)
 
