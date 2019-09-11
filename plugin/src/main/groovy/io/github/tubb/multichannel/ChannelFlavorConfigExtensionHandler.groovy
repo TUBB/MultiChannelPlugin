@@ -8,7 +8,6 @@ import org.gradle.api.Project;
  */
 
 class ChannelFlavorConfigExtensionHandler {
-
     static void createChannel(Project project) {
         def appChannelExtension = project['appChannel']
         if (appChannelExtension == null) {

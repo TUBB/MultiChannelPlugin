@@ -2,14 +2,35 @@ apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+group='io.github.tubb'
+version='1.0.2'
+
+publish {
+    userOrg = 'tubb'
+    groupId = group
+    artifactId = 'multichannel'
+    publishVersion = version
+    desc = 'Build multi channel for Android(apk, aar)'
+    website = "https://github.com/TUBB/${rootProject.name}"
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
 buildscript {
     repositories {
+        mavenCentral()
         jcenter {
             url "http://jcenter.bintray.com/"
         }
     }
     dependencies {
-        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath 'com.novoda:bintray-release:0.9.1'
     }
 }
 
@@ -35,11 +56,4 @@ compileGroovy {
     targetCompatibility = "1.7"
 }
 
-publish {
-    userOrg = 'tubb'
-    groupId = 'io.github.tubb'
-    artifactId = 'multichannel'
-    version = '1.0.1'
-    description = 'Build multi channels for Android(apk, aar)'
-    website = "https://github.com/TUBB/${rootProject.name}"
-}
+

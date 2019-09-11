@@ -1,5 +1,5 @@
 # MultiChannelPlugin
-![](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg) [![](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+![](https://img.shields.io/badge/release-v1.0.2-brightgreen.svg) [![](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 多渠道打包gradle插件，支持打包apk和aar
 - 读取渠道配置文件，动态生成`ProductFlavor`
@@ -8,7 +8,7 @@
 
 # 添加插件依赖
 ```groovy
-classpath 'io.github.tubb:multichannel:1.0.1'
+classpath 'io.github.tubb:multichannel:1.0.2'
 // apply multi channel plugin
 apply plugin: 'io.github.tubb.multichannel'
 ```
@@ -73,16 +73,34 @@ appChannel {
 由于apk包和aar包最终输出机制基本一致，所以插件同样适用于aar打多渠道包，插件的使用基本是跟打apk包一致，具体可以查看[librarytest](https://github.com/TUBB/MultiChannelPlugin/blob/master/librarytest/build.gradle)
 
 # 运行
-```groovy
-./gradlew clean :moduleName:multiChannel
+```html
+gradlew clean :moduleName:multiChannel
+OR
+gradlew clean :moduleName:mC
 ```
 
 # Note
 由于`Android gradle plugin`版本向后兼容性不是很理想，自己编写、测试插件代码是基于
-```groovy
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.1-all.zip
+```html
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
 ```
 ```groovy
-classpath 'com.android.tools.build:gradle:3.0.1'
+classpath 'com.android.tools.build:gradle:3.5.0'
 ```
 如在其它版本遇到问题，欢迎提`Issues`和提交`PR`
+
+# License
+
+    Copyright 2019 TUBB
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.

@@ -1,2 +1,3 @@
 include ':app', ':librarytest'
-include ':plugin'
+include ':multichannel'
+project(':multichannel').projectDir = new File(settingsDir, '../MultiChannelPlugin/plugin')

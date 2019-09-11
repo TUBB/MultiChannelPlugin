@@ -24,7 +24,7 @@ class AppChannelPlugin implements Plugin<Project> {
         project.appChannel.extensions.create('channelFlavorConfig', ChannelFlavorConfigExtension)
         project.appChannel.extensions.create('bundleOutputConfig', BundleOutputConfigExtension)
         AppChannelTask multiChannelTask = project.tasks.create(AppChannelTask.taskName(), AppChannelTask.class)
-        Task buildTask = project.tasks.getByName('build');
+        Task buildTask = project.tasks.getByName('build')
         multiChannelTask.setGroup('MultiChannel')
         multiChannelTask.dependsOn(buildTask)
         multiChannelTask.setDescription('Build with multi channels.')

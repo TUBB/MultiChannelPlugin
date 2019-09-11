@@ -43,3 +43,5 @@ captures/
 .externalNativeBuild
 
 .DS_Store
+
+repo/

@@ -24,9 +24,9 @@ class AppChannelTask extends DefaultTask {
             File parentFile = new File(outputDir)
             parentFile.mkdirs()
             println("========begin copy=========")
-            srcBundlePathList.each { path ->
-                File srcFile = new File(path)
-                File targetFile = new File(parentFile, srcFile.getName())
+            srcBundlePathList.each { bundle ->
+                File srcFile = new File(bundle.src)
+                File targetFile = new File(parentFile, bundle.targetFileName)
                 targetFile.withOutputStream { os->
                     srcFile.withInputStream { ins->
                         os << ins

@@ -1,7 +1,7 @@
 package io.github.tubb.multichannel
 
 import org.gradle.api.GradleException
-import org.gradle.api.Project;
+import org.gradle.api.Project
 
 /**
  * apkOutputConfig dsl handler
@@ -9,7 +9,6 @@ import org.gradle.api.Project;
  */
 
 class BundleOutputConfigExtensionHandler {
-
     static void renameBundleFile(Project project, def appChannelExtension) {
         def bundleOutputConfigExtension = appChannelExtension.bundleOutputConfig
         if (bundleOutputConfigExtension == null) return
@@ -27,16 +26,19 @@ class BundleOutputConfigExtensionHandler {
         variants.all { variant ->
             String flavorName = variant.flavorName
             if (project.plugins.hasPlugin('com.android.library')
-                    && (flavorName == null || ''.equals(flavorName))) {
+                    && (flavorName == null || '' == flavorName)) {
                 // filter library sync
                 return
             }
             variant.outputs.all { output ->
+                BundleData bundleData = new BundleData()
+                bundleData.src = output.outputFile.getAbsolutePath()
+                bundleData.targetFileName = output.outputFile.getName()
                 if (renameBundleFile != null) {
-                    output.outputFileName = renameBundleFile(project, variant)
+                    bundleData.targetFileName = renameBundleFile(project, variant)
                 }
-                if (!'debug'.equals(variant.buildType.name)) {
-                    srcBundlePathList.add(output.outputFile.getAbsolutePath())
+                if (!('debug' == variant.buildType.name)) {
+                    srcBundlePathList.add(bundleData)
                 }
             }
         }

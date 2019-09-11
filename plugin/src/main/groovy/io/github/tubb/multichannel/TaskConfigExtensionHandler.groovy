@@ -8,7 +8,6 @@ import org.gradle.api.Project;
  */
 
 class TaskConfigExtensionHandler {
-
     static void applyTaskConfig(Project project, def taskConfigExtension) {
         boolean disableDebugTask = taskConfigExtension.disableDebugTask
         boolean disableLintTask = taskConfigExtension.disableLintTask
